@@ -1,6 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+require_once "connection.php";
+
 session_start();
-$mongo = new MongoDB\Driver\Manager('mongodb+srv://tester:kAfntY15YnoAJKs5@cluster0.vjhlz.mongodb.net/?retryWrites=true&w=majority');
 
 $databaseName = "VocabloDB";
 $collectionName = "Administrador";
@@ -19,8 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($pass === $document->contrasena) {
                 $_SESSION["user"] = $user;
                 $_SESSION["nombre"] = $document->nombres;
+                $_SESSION["apellidoP"] = $document->apellidoPaterno;
+                $_SESSION["apellidoM"] = $document->apellidoMaterno;
+                $_SESSION["sucursal"] = $document->sucursal;
 
-                header("Location: homeAdm.php");
+                header("Location: ../homeAdm.php");
                 exit();
             } else {
                 echo "Contraseña incorrecta ";

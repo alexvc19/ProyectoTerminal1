@@ -24,12 +24,19 @@ if (isset($_SESSION["user"])) {
         <div class="user-profile">
             <img src="Resources/img/perfil.jpeg" >
             <div class="user-info">
-                <h1>Nombre del Usuario</h1>
-                <p>Nombre de la Escuela</p>
+                <h1>
+                <?php echo $_SESSION["nombre"] .
+                " ". $_SESSION["apellidoP"]. 
+                " ". $_SESSION["apellidoM"]; 
+                ?>
+                </h1>
+                <p>
+                <?php echo $_SESSION["sucursal"]; ?>
+                </p>
             </div>
         </div>
         <ul class="menu">
-            <li><a href="#">Inicio</a></li>
+            <li><a href="">Inicio</a></li>
             <li><a href="#">Personal</a></li>
             <li><a href="PHP/logout.php">Cerrar sesion</a></li>
         </ul>
