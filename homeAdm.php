@@ -15,7 +15,7 @@ if (isset($_SESSION["user"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles/menuStyle.css"> 
+    <link rel="stylesheet" href="Styles/menuStyle.css?v=1"> 
 
     <title>Administración</title>
 </head>
@@ -37,7 +37,7 @@ if (isset($_SESSION["user"])) {
         </div>
         <ul class="menu">
             <li><a href="">Inicio</a></li>
-            <li><a href="#">Personal</a></li>
+            <li><a href="personal.php">Personal</a></li>
             <li><a href="PHP/logout.php">Cerrar sesion</a></li>
         </ul>
     </nav>

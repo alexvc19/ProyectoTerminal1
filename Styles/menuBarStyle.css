@@ -1,0 +1,25 @@
+#menu-bar {
+    margin-top: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#menu-bar button {
+    
+    color: #fff;
+    font-weight: bold;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#menu-bar button:hover {
+    background-color: gray; 
+}
+.btnIngresar{
+    background-color: #00624F;
+}
+.btnPerfil{
+    background-color: #920014;
+}
