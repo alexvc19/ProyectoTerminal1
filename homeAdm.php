@@ -19,7 +19,6 @@ if (isset($_SESSION["user"])) {
 
     <title>Administración</title>
 </head>
-<body>
 <nav>
         <div class="user-profile">
             <img src="Resources/img/perfil.jpeg" >
@@ -41,6 +40,8 @@ if (isset($_SESSION["user"])) {
             <li><a href="PHP/logout.php">Cerrar sesion</a></li>
         </ul>
     </nav>
-    <img class="back" src="Resources/img/646.jpg">
+<body>
+    <img src="Resources/img/646.jpg" width="100%">
+
 </body>
 </html>
