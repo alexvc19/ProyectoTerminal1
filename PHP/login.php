@@ -30,14 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: ../homeAdm.php");
                 exit();
             } else {
-                echo "Contraseña incorrecta ";
-                echo $document->nombres;
+                echo "<script>alert('Contraseña incorrecta');</script>";
+                echo "<script>window.location = '../loginAdm.html';</script>";
+                exit();
             }
         } else {
-            echo "Usuario no encontrado";
+            echo "<script>alert('Usuario no encontrado');</script>";
+            echo "<script>window.location = '../loginAdm.html';</script>";
+            exit();
         }
     } catch (MongoDB\Driver\Exception\Exception $e) {
         echo "Error al realizar la consulta: " . $e->getMessage();
+        echo "<script>window.location = '../loginAdm.html';</script>";
     }
 }
 ?>

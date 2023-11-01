@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $curp = $_POST['curp'];
             $telefono = $_POST['telefono'];
             $usuario = $_POST['usuario'];
+            $contrasena = $_POST['contrasena'];
             $calle = $_POST['calle'];
             $numero = $_POST['numero'];
             $colonia = $_POST['colonia'];
@@ -66,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'curp' => $curp,
                     'telefono' => $telefono,
                     'usuario' => $usuario,
+                    'contrasena' => $contrasena,
                     'direccion' => [
                         'calle' => $calle,
                         'numero' => $numero,

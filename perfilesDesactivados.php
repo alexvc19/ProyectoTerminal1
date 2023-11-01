@@ -5,11 +5,11 @@ session_start();
 
 if (isset($_SESSION["user"])) {
     try {
-        $query = new MongoDB\Driver\Query(['estatus' => 'activo']);
+        $query = new MongoDB\Driver\Query(['estatus' => 'inactivo']);
         $registros = [];
 
         $coleccion = "Coordinador";
-        $consulta = new MongoDB\Driver\Query(['estatus' => 'activo']);
+        $consulta = new MongoDB\Driver\Query(['estatus' => 'inactivo']);
 
         $cursor = $mongo->executeQuery('VocabloDB.' . $coleccion, $consulta);
         foreach ($cursor as $document) {
@@ -17,7 +17,7 @@ if (isset($_SESSION["user"])) {
         }
 
         $coleccion = "Profesor";
-        $consulta = new MongoDB\Driver\Query(['estatus' => 'activo']);
+        $consulta = new MongoDB\Driver\Query(['estatus' => 'inactivo']);
 
         $cursor = $mongo->executeQuery('VocabloDB.' . $coleccion, $consulta);
         foreach ($cursor as $document) {
@@ -66,16 +66,12 @@ if (isset($_SESSION["user"])) {
         </div>
         <ul class="menu">
             <li><a href="homeAdm.php">Inicio</a></li>
-            <li><a href="">Personal</a></li>
+            <li><a href="personal.php">Personal</a></li>
             <li><a href="PHP/logout.php">Cerrar sesion</a></li>
         </ul>
     </nav>
 </header>
 <body>
-    <div id="menu-bar">
-        <a href="registro.php"><button class="btnIngresar">Ingresar nuevo</button></a>
-        <a href="perfilesDesactivados.php" ><button class="btnPerfil">Perfiles desactivados</button></a>
-    </div>
     <div id="tabla-container">
     <table>
         <tr>

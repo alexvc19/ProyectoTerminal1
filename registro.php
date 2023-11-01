@@ -19,6 +19,7 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
     <title>Registro personal</title>
+    <script src="JS/validaciones.js"></script>
 </head>
 <header>
     <nav>
@@ -47,7 +48,7 @@ if (isset($_SESSION["user"])) {
     <center>
     <div class="form-container">
         <h2>Registro de colaboradores</h2>
-        <form action="PHP/registrarTrabajador.php" method="POST" enctype="multipart/form-data">
+        <form action="PHP/registrarTrabajador.php" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
             <div class="form-group">
                 <label for="cargo">Cargo:</label>
                 <select name="cargo" id="cargo">
@@ -79,14 +80,15 @@ if (isset($_SESSION["user"])) {
             </div>
             <div class="form-group">
                 <div class="input-group">
-                    <input type="text" name="curp" id="curp" placeholder="CURP" autocomplete="off" >
-                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" autocomplete="off" >
+                    <input type="text" name="curp" id="curp" placeholder="CURP" autocomplete="off" maxlength="18">
+                    <input type="tel" name="telefono" id="telefono" placeholder="Teléfono" autocomplete="off" minlength="10" maxlength="10">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
                     <input type="text" name="usuario" id="usuario" placeholder="Usuario" autocomplete="off" >
                     <input type="password" name="contrasena" id="contrasena" placeholder="Contraseña" autocomplete="off" >
+                    <button type="button" id="mostrarContrasena" onclick="mostrarOcultarContrasena()">Mostrar Contraseña</button>
                 </div>
             </div>
             

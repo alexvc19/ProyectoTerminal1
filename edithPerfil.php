@@ -46,6 +46,7 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/menuBarStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
     <title>Registro personal</title>
+    <script src="JS/validaciones.js"></script>
 </head>
 <header>
     <nav>
@@ -81,13 +82,12 @@ if (isset($_SESSION["user"])) {
     }
     ?>
     <div id="menu-bar">
-        <a href=".php"><button class="<?php echo $buttonClass; ?>"><?php echo $buttonText; ?></button></a>
+        <a href="PHP/cambiarEstatus.php?perfil_id=<?php echo $perfilId; ?>"><button class="<?php echo $buttonClass; ?>"><?php echo $buttonText; ?></button></a>
     </div>
     <center>
     <div class="form-container">
         <h2>Edición de información</h2>
-        
-        <form action="PHP/modificarTrabajador.php" method="POST" enctype="multipart/form-data">
+        <form action="PHP/modificarTrabajador.php" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
         <input type="hidden" name="perfil_id" value="<?php echo $perfilId; ?>">
             <div class="form-group">
                 <label for="cargo">Cargo:</label>
@@ -127,9 +127,9 @@ if (isset($_SESSION["user"])) {
             <div class="form-group">
                 <div class="input-group">
                     <input type="text" name="curp" id="curp" 
-                    value="<?php echo $perfil->curp; ?>" placeholder="CURP" autocomplete="off" >
+                    value="<?php echo $perfil->curp; ?>" placeholder="CURP" autocomplete="off" minlength="18" maxlength="18">
                     <input type="tel" name="telefono" id="telefono" 
-                    value="<?php echo $perfil->telefono; ?>" placeholder="Teléfono" autocomplete="off" >
+                    value="<?php echo $perfil->telefono; ?>" placeholder="Teléfono" autocomplete="off" minlength="10" maxlength="10">
                 </div>
             </div>
             <div class="form-group">
@@ -137,19 +137,9 @@ if (isset($_SESSION["user"])) {
                     <input type="text" name="usuario" id="usuario" 
                     value="<?php echo $perfil->usuario; ?>" placeholder="Usuario" autocomplete="off" >
                     <input type="password" name="contrasena" id="contrasena" 
-                    value="<?php echo $perfil->contrasena; ?>" placeholder="Contraseña" autocomplete="off" >
+                    value="<?php echo $perfil->contrasena; ?>" placeholder="Contraseña" autocomplete="off" minlength="8">
                     <button type="button" id="mostrarContrasena" onclick="mostrarOcultarContrasena()">Mostrar Contraseña</button>
 
-                    <script>
-                    function mostrarOcultarContrasena() {
-                        var contrasenaInput = document.getElementById("contrasena");
-                        if (contrasenaInput.type === "password") {
-                            contrasenaInput.type = "text";
-                        } else {
-                            contrasenaInput.type = "password";
-                        }
-                    }
-                    </script>
                 </div>
             </div>
             

@@ -45,7 +45,8 @@ if (
         $targetFile = $targetDirectory . basename($identificadorUnico.'-'.$_FILES['foto-perfil']['name']);
         $tagFile = 'Resources/perfiles/' . basename($identificadorUnico.'-'.$_FILES['foto-perfil']['name']);
     
-        if (move_uploaded_file($_FILES['foto-perfil']['tmp_name'], $targetFile)) {        
+        if (move_uploaded_file($_FILES['foto-perfil']['tmp_name'], $targetFile)) {
+            
             $fotoPerfil = $tagFile;
     
             $documento = [
@@ -72,6 +73,7 @@ if (
             ];
     
             $coleccion = ($cargo === 'profesor') ? 'Profesor' : 'Coordinador';
+
             $bulkWrite = new MongoDB\Driver\BulkWrite;
             $bulkWrite->insert($documento);
             $mongo->executeBulkWrite('VocabloDB.' . $coleccion, $bulkWrite);
@@ -81,7 +83,7 @@ if (
             echo '<script>alert("Error al cargar el archivo.");</script>';
         }
     } else {
-        echo '<script>alert("Por favor, complete todos los campos");window.location.href="../personal.php";</script>';
+        echo '<script>alert("Por favor, complete todos los campos");window.location.href="../registro.php";</script>';
 
     }
 
