@@ -7,6 +7,7 @@ if (
     isset($_POST['nombres']) &&
     isset($_POST['apellido-paterno']) &&
     isset($_POST['apellido-materno']) &&
+    isset($_POST['genero']) &&
     isset($_POST['fecha-nacimiento']) &&
     isset($_POST['curp']) &&
     isset($_POST['telefono']) &&
@@ -26,6 +27,7 @@ if (
     $nombres = $_POST['nombres'];
     $apellidoPaterno = $_POST['apellido-paterno'];
     $apellidoMaterno = $_POST['apellido-materno'];
+    $genero = $_POST['genero'];
     $fechaNacimiento = new MongoDB\BSON\UTCDateTime(strtotime($_POST['fecha-nacimiento']) * 1000);
     $curp = $_POST['curp'];
     $telefono = $_POST['telefono'];
@@ -54,6 +56,7 @@ if (
                 'nombres' => $nombres,
                 'apellidoPaterno' => $apellidoPaterno,
                 'apellidoMaterno' => $apellidoMaterno,
+                'genero' => $genero,
                 'fotoPerfil' => $fotoPerfil, 
                 'fechaNacimiento' => $fechaNacimiento,
                 'curp' => $curp,

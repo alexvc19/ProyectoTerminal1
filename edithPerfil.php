@@ -107,6 +107,11 @@ if (isset($_SESSION["user"])) {
             <div class="form-group">
                 <input type="text" name="apellido-materno" id="apellido-materno" 
                 value="<?php echo $perfil->apellidoMaterno; ?>" autocomplete="off" placeholder="Apellido Materno" >
+                <select name="genero" id="genero">
+                    <option value="masculino" <?php if ($perfil->genero === 'masculino') echo 'selected'; ?>>Masculino</option>
+                    <option value="femenino" <?php if ($perfil->genero === 'femenino') echo 'selected'; ?>>Femenino</option>
+                    <option value="otro" <?php if ($perfil->genero === 'otro') echo 'selected'; ?>>Otro</option>
+                </select>
             </div>
             <div class="form-group">
             <label for="foto-perfil">Foto de perfil:</label>

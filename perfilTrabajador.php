@@ -75,6 +75,7 @@ if (isset($_SESSION["user"])) {
                 <h2>Nombre: <?php echo $perfil->nombres; ?></h2>
                 <p>Apellido Paterno: <?php echo $perfil->apellidoPaterno; ?></p>
                 <p>Apellido Materno: <?php echo $perfil->apellidoMaterno; ?></p>
+                <p>Género: <?php echo $perfil->genero; ?></p>
                 <p>Fecha de Nacimiento: <?php echo date('d/m/Y', strtotime($perfil->fechaNacimiento->toDateTime()->format('Y-m-d H:i:s'))); ?></p>
                 <p>CURP: <?php echo $perfil->curp; ?></p>
                 <p>Usuario: <?php echo $perfil->usuario; ?></p>

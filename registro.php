@@ -64,6 +64,11 @@ if (isset($_SESSION["user"])) {
             </div>
             <div class="form-group">
                 <input type="text" name="apellido-materno" id="apellido-materno" autocomplete="off" placeholder="Apellido Materno" >
+                <select name="genero" id="genero">
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
             </div>
             <div class="form-group">
                 <div class="input-group">
