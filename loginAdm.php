@@ -6,11 +6,12 @@
     <link rel="stylesheet" href="Styles/stylesLog.css">
     <link rel="stylesheet" type="text/css" href="Styles/modal.css">
     <title>Administracion</title>
+    <script src="JS/validarLog.js"></script>
 </head>
 <body>
         <div class="login-container" >
             <h2>Administración</h2>
-            <form class="login-form" action="PHP/login.php" method="POST">
+            <form class="login-form" action="PHP/login.php" method="POST" onsubmit="return validarFormulario()" >
                 <img src="Resources/img/logoVocablo.png" alt="">
                 <div class="input-container">
                     <input type="text" id="user" name="user" required placeholder="Usuario">
@@ -28,7 +29,7 @@
             <p>Usuario o contraseña incorrectos!</p>
         </div>
     </div>
-    
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         <?php

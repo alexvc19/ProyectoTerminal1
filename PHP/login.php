@@ -7,6 +7,24 @@ require_once "connection.php";
 
 session_start();
 
+function bloquearUsuarioTemporalmente() {
+    $_SESSION['intentos_fallidos'] = 0;
+    $_SESSION['tiempo_bloqueo'] = time() + 60; 
+}
+
+function registrarIntentoFallido() {
+    $_SESSION['intentos_fallidos']++;
+
+    if ($_SESSION['intentos_fallidos'] >= 3) {
+        bloquearUsuarioTemporalmente();
+    }
+}
+
+function usuarioBloqueado() {
+    return isset($_SESSION['tiempo_bloqueo']) && $_SESSION['tiempo_bloqueo'] > time();
+}
+
+
 $databaseName = "VocabloDB";
 $collectionName = "Administrador";
 
@@ -15,6 +33,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pass = $_POST["pass"];
 
     $query = new MongoDB\Driver\Query(["usuario" => $user]);
+
+    if (usuarioBloqueado()) {
+        echo "<script>alert('Usuario bloqueado temporalmente. Inténtalo de nuevo más tarde.');</script>";
+        echo "<script>window.location = '../loginAdm.php';</script>";
+        exit();
+    }
 
     try {
         $cursor = $mongo->executeQuery("$databaseName.$collectionName", $query);
@@ -27,11 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["apellidoP"] = $document->apellidoPaterno;
                 $_SESSION["apellidoM"] = $document->apellidoMaterno;
                 $_SESSION["sucursal"] = $document->sucursal;
+                $_SESSION['intentos_fallidos'] = 0;
 
                 header("Location: ../homeAdm.php");
                 exit();
             } else {
                 $_SESSION['errorModal'] = true;
+                registrarIntentoFallido();
                 header("Location: ../loginAdm.php");
                 exit();
             }
@@ -42,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } catch (MongoDB\Driver\Exception\Exception $e) {
         echo "Error al realizar la consulta: " . $e->getMessage();
-        echo "<script>window.location = '../loginAdm.html';</script>";
+        echo "<script>window.location = '../loginAdm.php';</script>";
     }
 }
 ?>
