@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/stylesLog.css">
+    <link rel="stylesheet" type="text/css" href="Styles/modal.css">
     <title>Administracion</title>
 </head>
 <body>
@@ -20,5 +21,27 @@
                 <button type="submit">Iniciar Sesión</button>
             </form>
         </div>
+
+    <div id="errorModal" class="modal">
+        <div class="modal-content error">
+            <span class="close" id="closeErrorModal">&times;</span>
+            <p>Usuario o contraseña incorrectos!</p>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        <?php
+        session_start();
+        
+        if (isset($_SESSION['errorModal']) && $_SESSION['errorModal']){
+            echo "showErrorModal();";
+            unset($_SESSION['errorModal']);
+        }
+        ?>
+    });
+</script>
+    
+    <script src="JS/modal.js"></script>
 </body>
 </html>

@@ -29,7 +29,7 @@ if (isset($_SESSION["user"])) {
 
 } else {
     
-    header("Location: login.html");
+    header("Location: loginAdm.php");
     exit();
 }
 ?>

@@ -6,7 +6,7 @@ if (isset($_SESSION["user"])) {
     
 } else {
     
-    header("Location: login.html");
+    header("Location: loginAdm.php");
     exit();
 }
 ?>
@@ -19,7 +19,6 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
     <title>Registro personal</title>
-    <script src="JS/validaciones.js"></script>
 </head>
 <header>
     <nav>
@@ -111,9 +110,22 @@ if (isset($_SESSION["user"])) {
                 </div>
             </div>
             <div class="form-group">
-                <div class="input-group">
-                    <input type="text" name="ciudad" autocomplete="off" placeholder="Ciudad">
-                    <input type="text" name="estado" autocomplete="off" placeholder="Estado">
+                    <div class="input-group">
+                    <select name="ciudad" id="ciudad" autocomplete="off">
+                    <option value="Manzanillo">Manzanillo</option>
+                    <option value="Colima">Colima</option>
+                    <option value="Tecomán">Tecomán</option>
+                    <option value="Villa de Álvarez">Villa de Álvarez</option>
+                    <option value="Armería">Armería</option>
+                    <option value="Comala">Comala</option>
+                    <option value="Coquimatlán">Coquimatlán</option>
+                    <option value="Cuauhtémoc">Cuauhtémoc</option>
+                    <option value="Ixtlahuacán">Ixtlahuacán</option>
+                    <option value="Minatitlán">Minatitlán</option>
+                </select>
+                    <select name="estado" id="estado" autocomplete="off">
+                        <option value="Colima">Colima</option>
+                    </select>
                 </div>
                     </div>
         
@@ -121,6 +133,7 @@ if (isset($_SESSION["user"])) {
         </form>
     </div>
     </center>
+    <script src="JS/validaciones.js"></script>
 </body>
 <footer class="footer">
     <div class="container">

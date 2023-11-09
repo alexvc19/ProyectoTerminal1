@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    margin: 15px;
+    width: 25%;
+    text-align: center;
+}
+
+.card h2 {
+    color: #000;
+}
+
+.card p {
+    color: #666 bold;
+    font-size: 64px;
+}
+
+/* Estilos responsivos para pantalla pequeña */
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+}

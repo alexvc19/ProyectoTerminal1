@@ -40,6 +40,25 @@ if (
     $ciudad = $_POST['ciudad'];
     $estado = $_POST['estado'];
     $estatus = "activo";
+    
+    
+        $queryProfesor = new MongoDB\Driver\Query(['usuario' => $usuario]);
+        $cursorProfesor = $mongo->executeQuery("VocabloDB.Profesor", $queryProfesor);
+        $existingUserProfesor = current($cursorProfesor->toArray());
+
+        $queryCoordinador = new MongoDB\Driver\Query(['usuario' => $usuario]);
+        $cursorCoordinador = $mongo->executeQuery("VocabloDB.Coordinador", $queryCoordinador);
+        $existingUserCoordinador = current($cursorCoordinador->toArray());
+
+        if ($existingUserProfesor || $existingUserCoordinador) {
+            echo '<script>alert("Ya existe un usuario con el mismo nombre. Por favor, elige otro nombre de usuario."); window.location.href="../registro.php";</script>';
+            exit();
+        }
+
+        if ($existingUser) {
+            echo '<script>alert("Ya existe un usuario con el mismo nombre. Por favor, elige otro nombre de usuario."); window.location.href="../registro.php";</script>';
+            exit();
+        }
 
     if (isset($_FILES['foto-perfil']) && $_FILES['foto-perfil']['error'] === UPLOAD_ERR_OK) {
         $identificadorUnico = uniqid();
@@ -87,9 +106,7 @@ if (
         }
     } else {
         echo '<script>alert("Por favor, complete todos los campos");window.location.href="../registro.php";</script>';
-
     }
-
     } catch (Exception $e) {
         echo '<script>alert("Error al insertar el registro: ' . $e->getMessage() . '");</script>';
     }

@@ -3,6 +3,6 @@ session_start();
 
 session_destroy();
 
-header("Location: ../loginAdm.html"); 
+header("Location: ../loginAdm.php"); 
 exit();
 ?>

@@ -27,11 +27,11 @@ if (isset($_SESSION["user"])) {
 
     } catch (Exception $e) {
         echo $e->getMessage();
-        header("Location: login.html");
+        header("Location: login.php");
         exit();
     }
 } else {
-    header("Location: login.html");
+    header("Location: login.php");
     exit();
 }
 
@@ -107,4 +107,5 @@ if (isset($_SESSION["user"])) {
     </div>
     
 </body>
+
 </html>

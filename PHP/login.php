@@ -1,7 +1,8 @@
+
+
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
 require_once "connection.php";
 
 session_start();
@@ -30,14 +31,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: ../homeAdm.php");
                 exit();
             } else {
-                echo "<script>alert('Contraseña incorrecta');</script>";
-                echo "<script>window.location = '../loginAdm.html';</script>";
+                $_SESSION['errorModal'] = true;
+                header("Location: ../loginAdm.php");
                 exit();
             }
         } else {
-            echo "<script>alert('Usuario no encontrado');</script>";
-            echo "<script>window.location = '../loginAdm.html';</script>";
-            exit();
+            $_SESSION['errorModal'] = true;
+            header("Location: ../loginAdm.php");
+                exit();
         }
     } catch (MongoDB\Driver\Exception\Exception $e) {
         echo "Error al realizar la consulta: " . $e->getMessage();
