@@ -20,8 +20,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             isset($_POST['colonia']) &&
             isset($_POST['cp']) &&
             isset($_POST['ciudad']) &&
-            isset($_POST['estado'])&&
-            isset($_POST['foto-perfil-actual'])
+            isset($_POST['estado']) &&
+            isset($_POST['foto-perfil-actual']) &&
+            $_POST['perfil_id'] !== '' &&
+            $_POST['cargo'] !== '' &&
+            $_POST['nombres'] !== '' &&
+            $_POST['apellido-paterno'] !== '' &&
+            $_POST['apellido-materno'] !== '' &&
+            $_POST['genero'] !== '' &&
+            $_POST['fecha-nacimiento'] !== '' &&
+            $_POST['curp'] !== '' &&
+            $_POST['telefono'] !== '' &&
+            $_POST['usuario'] !== '' &&
+            $_POST['contrasena'] !== '' &&
+            $_POST['calle'] !== '' &&
+            $_POST['numero'] !== '' &&
+            $_POST['colonia'] !== '' &&
+            $_POST['cp'] !== '' &&
+            $_POST['ciudad'] !== '' &&
+            $_POST['estado'] !== '' &&
+            $_POST['foto-perfil-actual'] !== ''
         ) {
             $perfilId = $_POST['perfil_id'];
             $cargo = $_POST['cargo'];
@@ -88,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo '<script>alert("Perfil actualizado exitosamente."); window.location.href="../personal.php";</script>';
         } else {
-            echo '<script>alert("Por favor, completa todos los campos obligatorios.");</script>';
+            echo '<script>alert("Por favor, completa todos los campos."); window.location.href="../personal.php";</script>';
             
             
         }

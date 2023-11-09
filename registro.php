@@ -133,7 +133,12 @@ if (isset($_SESSION["user"])) {
         </form>
     </div>
     </center>
-    <script src="JS/validaciones.js"></script>
+    <script>
+        
+            var inputArchivo = document.getElementById("foto-perfil");
+            
+    </script>
+        <script src="JS/validaciones.js"></script>
 </body>
 <footer class="footer">
     <div class="container">

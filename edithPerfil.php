@@ -140,7 +140,7 @@ if (isset($_SESSION["user"])) {
             <div class="form-group">
                 <div class="input-group">
                     <input type="text" name="usuario" id="usuario" 
-                    value="<?php echo $perfil->usuario; ?>" placeholder="Usuario" autocomplete="off" >
+                    value="<?php echo $perfil->usuario; ?>" placeholder="Usuario" autocomplete="off" readOnly>
                     <input type="password" name="contrasena" id="contrasena" 
                     value="<?php echo $perfil->contrasena; ?>" placeholder="Contraseña" autocomplete="off" minlength="8">
                     <button type="button" id="mostrarContrasena" onclick="mostrarOcultarContrasena()">Mostrar Contraseña</button>
@@ -178,6 +178,14 @@ if (isset($_SESSION["user"])) {
         </form>
     </div>
     </center>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("usuario").readOnly = true;
+            var fotoPerfilActual = document.getElementById("foto-perfil-actual").value;
+            
+        });
+        </script>
+        
 </body>
 <footer class="footer">
     <div class="container">

@@ -4,11 +4,11 @@ function validarFormulario() {
     var apellidoPaterno = document.getElementById("apellido-paterno").value;
     var apellidoMaterno = document.getElementById("apellido-materno").value;
 
+
     var curp = document.getElementById("curp").value;
     var telefono = document.getElementById("telefono").value;
     var contrasena = document.getElementById("contrasena").value;
     var fechaNacimiento = document.getElementById("fecha-nacimiento").value;
-    var inputArchivo = document.getElementById("foto-perfil");
 
     var fechaActual = new Date();
     var fechaNacimientoDate = new Date(fechaNacimiento);
@@ -26,10 +26,16 @@ function validarFormulario() {
         alert("Por favor, escribe tu apellido materno.");
         return false;
     }   
-    if (inputArchivo.files.length === 0) {
-        alert("Por favor, selecciona una foto antes de enviar el formulario.");
-        return false;
+    
+    if (typeof fotoPerfilActual !== 'undefined' && fotoPerfilActual !== null) {
+        
+    } else {
+        if (inputArchivo.files.length === 0) {
+            alert("Por favor, selecciona una foto antes de enviar el formulario.");
+            return false;
+        }
     }
+
     
     if (!fechaNacimiento) {
         alert("Por favor, selecciona una fecha de nacimiento.");
