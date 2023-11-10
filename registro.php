@@ -19,6 +19,8 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
     <link rel="stylesheet" href="Styles/modalG.css?v=1">
+    <link rel="icon" type="image/png" href="Resources/icons/personal.png">
+
     <title>Registro personal</title>
     <script src="JS/modal.js"></script>
 </head>
@@ -129,9 +131,9 @@ if (isset($_SESSION["user"])) {
                         <option value="Colima">Colima</option>
                     </select>
                 </div>
-                    </div>
+            </div>
         
-            <button type="submit">Enviar</button>
+            <button type="submit">Registrar</button>
         </form>
     </div>
     </center>

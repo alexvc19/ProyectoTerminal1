@@ -61,6 +61,19 @@ nav {
     transition: background-color 0.3s;
 }
 
+.buttonGreen {
+    background-color: #00624F;
+}
+.buttonOrange{
+    background-color: #993C00;
+}
+.buttonRed{
+    background-color: #920014;
+}
+.butttonBlue{
+    background-color: #1B0E6A;
+}   
+
 .menu a:hover {
     background-color: #0F3F00;
 }

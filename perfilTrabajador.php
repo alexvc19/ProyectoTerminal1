@@ -41,6 +41,8 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/perfilStyle.css?v=1">
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
+    <link rel="icon" type="image/png" href="Resources/icons/personal.png">
+
     <title>Perfil de Usuario</title>
 </head>
 <header>

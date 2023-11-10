@@ -45,7 +45,9 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/tablasStyle.css?v=1">
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1">
     <link rel="stylesheet" href="Styles/menuBarStyle.css?v=1">
-    <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
+    <link rel="stylesheet" href="Styles/footerStyle.css?v=1">    
+    <link rel="icon" type="image/png" href="Resources/icons/personal.png">
+
     <title>Personal</title>
 </head>
 <header>

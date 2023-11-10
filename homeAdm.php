@@ -34,6 +34,7 @@ if (isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1"> 
     <link rel="stylesheet" href="Styles/cards.css?v=1">
+    <link rel="icon" type="image/png" href="Resources/icons/inicio.png">
 
     <title>Administración</title>
 </head>

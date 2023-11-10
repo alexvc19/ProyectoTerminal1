@@ -46,6 +46,8 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/menuBarStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
     <link rel="stylesheet" href="Styles/modalG.css?v=1">
+    <link rel="icon" type="image/png" href="Resources/icons/personal.png">
+
     <title>Registro personal</title>
     <script src="JS/validaciones.js"></script>
 </head>
@@ -167,13 +169,24 @@ if (isset($_SESSION["user"])) {
                 </div>
             </div>
             <div class="form-group">
-                <div class="input-group">
-                    <input type="text" name="ciudad" 
-                    value="<?php echo $perfil->direccion->ciudad; ?>" autocomplete="off" placeholder="Ciudad">
-                    <input type="text" name="estado" 
-                    value="<?php echo $perfil->direccion->estado; ?>" autocomplete="off" placeholder="Estado">
+                    <div class="input-group">
+                <select name="ciudad" id="ciudad" autocomplete="off">
+                    <option value="Manzanillo" <?php if ($perfil->direccion->ciudad === 'Manzanillo') echo 'selected'; ?>>Manzanillo</option>
+                    <option value="Colima" <?php if ($perfil->direccion->ciudad === 'Colima') echo 'selected'; ?> >Colima</option>
+                    <option value="Tecomán" <?php if ($perfil->direccion->ciudad === 'Tecomán') echo 'selected'; ?>>Tecomán</option>
+                    <option value="Villa de Álvarez" <?php if ($perfil->direccion->ciudad === 'Villa de Álvarez') echo 'selected'; ?> >Villa de Álvarez</option>
+                    <option value="Armería" <?php if ($perfil->direccion->ciudad === 'Armería') echo 'selected'; ?>>Armería</option>
+                    <option value="Comala" <?php if ($perfil->direccion->ciudad === 'Comala') echo 'selected'; ?>>Comala</option>
+                    <option value="Coquimatlán" <?php if ($perfil->direccion->ciudad === 'Coquimatlán') echo 'selected'; ?>>Coquimatlán</option>
+                    <option value="Cuauhtémoc" <?php if ($perfil->direccion->ciudad === 'Cuauhtémoc') echo 'selected'; ?>>Cuauhtémoc</option>
+                    <option value="Ixtlahuacán" <?php if ($perfil->direccion->ciudad === 'Ixtlahuacán') echo 'selected'; ?>>Ixtlahuacán</option>
+                    <option value="Minatitlán" <?php if ($perfil->direccion->ciudad === 'Minatitlán') echo 'selected'; ?>>Minatitlán</option>
+                </select>
+                    <select name="estado" id="estado" autocomplete="off">
+                        <option value="Colima">Colima</option>
+                    </select>
                 </div>
-                    </div>
+            </div>
         
             <button type="submit">Modificar</button>
         </form>

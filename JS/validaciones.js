@@ -71,6 +71,14 @@ function validarFormulario() {
 
     return true;
 }
+function mostrarOcultarContrasena(){
+    var tipo = document.getElementById("contrasena");
+    if(tipo.type == "password"){
+        tipo.type = "text";
+    }else{
+        tipo.type = "password";
+    }
+}
 
 function mostrarModal(texto) {
     var modal = document.getElementById('genericModal');
