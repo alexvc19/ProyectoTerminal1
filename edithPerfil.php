@@ -45,6 +45,7 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1">
     <link rel="stylesheet" href="Styles/menuBarStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
+    <link rel="stylesheet" href="Styles/modalG.css?v=1">
     <title>Registro personal</title>
     <script src="JS/validaciones.js"></script>
 </head>
@@ -178,13 +179,20 @@ if (isset($_SESSION["user"])) {
         </form>
     </div>
     </center>
-        <script>
+    <script>
             document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("usuario").readOnly = true;
             var fotoPerfilActual = document.getElementById("foto-perfil-actual").value;
             
         });
         </script>
+    <div id="genericModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('genericModal')">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
+
         
 </body>
 <footer class="footer">

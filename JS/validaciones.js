@@ -15,15 +15,17 @@ function validarFormulario() {
     var edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
 
     if (!nombre) {  
-        alert("Por favor, escribe tu nombre.");
+        mostrarModal('Por favor, escribe tu nombre.');
         return false;
     }
     if (!apellidoPaterno) {
-        alert("Por favor, escribe tu apellido paterno.");
+        mostrarModal('Por favor, escribe tu apellido paterno.');
+        
         return false;
     }   
     if (!apellidoMaterno) {
-        alert("Por favor, escribe tu apellido materno.");
+        mostrarModal('Por favor, escribe tu apellido materno.');
+        
         return false;
     }   
     
@@ -31,50 +33,61 @@ function validarFormulario() {
         
     } else {
         if (inputArchivo.files.length === 0) {
-            alert("Por favor, selecciona una foto antes de enviar el formulario.");
+            mostrarModal('Por favor, selecciona una foto de perfil.');
             return false;
         }
     }
 
     
     if (!fechaNacimiento) {
-        alert("Por favor, selecciona una fecha de nacimiento.");
+        mostrarModal('Por favor, escribe tu fecha de nacimiento.');
         return false;
     }
 
     if (edad < 18 && fechaNacimiento ) {
-        alert("El usuario que intentas registrar no cumple la edad mínima.");
+        mostrarModal('El usuario que intentas registrar no cumple la edad minima');
         return false;
     }
 
     if (curp.length !== 18) {
-        alert("La CURP debe tener exactamente 18 caracteres.");
+        mostrarModal('La CURP debe contener exactamente 18 caracteres.');
         
         return false;
     }
 
     if (!/^\d{10}$/.test(telefono)) {
-        alert("El teléfono debe contener exactamente 10 dígitos numéricos.");
+        mostrarModal('El teléfono debe contener exactamente 10 dígitos.');
         return false;
     }
 
     if (!/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(contrasena)) {
-        alert("La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.");
+        mostrarModal('La contraseña debe contener al menos 8 caracteres, una letra mayúscula, un número y un carácter especial.');
         return false;
     }
     if (edad < 18) {
-        alert("El usuario que intentas registrar no cumple la edad minima");
+        mostrarModal('El usuario que intentas registrar no cumple la edad minima');
         return false; 
     }
 
     return true;
 }
 
-function mostrarOcultarContrasena() {
-    var contrasenaInput = document.getElementById("contrasena");
-    if (contrasenaInput.type === "password") {
-        contrasenaInput.type = "text";
-    } else {
-        contrasenaInput.type = "password";
-    }
+function mostrarModal(texto) {
+    var modal = document.getElementById('genericModal');
+    var modalText = document.getElementById('modalText');
+
+    modalText.innerText = texto;
+
+    modal.style.display = 'block';
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            cerrarModal('genericModal');
+        }
+    };
+}
+
+function cerrarModal(idModal) {
+    var modal = document.getElementById(idModal);
+    modal.style.display = 'none';
 }

@@ -65,7 +65,7 @@ nav {
     background-color: #0F3F00;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 868px) {
     .menu {
         flex-direction: row; 
         text-align: left; 
@@ -76,7 +76,7 @@ nav {
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 867px) {
     .menu {
         flex-direction: column; 
         text-align: center; 

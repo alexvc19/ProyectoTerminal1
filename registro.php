@@ -18,7 +18,9 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/formularioStyle.css?v=1">
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
+    <link rel="stylesheet" href="Styles/modalG.css?v=1">
     <title>Registro personal</title>
+    <script src="JS/modal.js"></script>
 </head>
 <header>
     <nav>
@@ -133,12 +135,16 @@ if (isset($_SESSION["user"])) {
         </form>
     </div>
     </center>
+    <div id="genericModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal('genericModal')">&times;</span>
+            <p id="modalText"></p>
+        </div>
+    </div>
     <script>
-        
-            var inputArchivo = document.getElementById("foto-perfil");
-            
+        var inputArchivo = document.getElementById("foto-perfil");    
     </script>
-        <script src="JS/validaciones.js"></script>
+    <script src="JS/validaciones.js"></script>
 </body>
 <footer class="footer">
     <div class="container">

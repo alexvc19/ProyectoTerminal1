@@ -1,0 +1,45 @@
+
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 100%; 
+    margin: auto;
+    overflow: hidden;
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.slide img {
+    width: 100%;
+    height: 90%;
+    border: 1px solid #ddd;
+}
+
+.prev-btn,
+.next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
