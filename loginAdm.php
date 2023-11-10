@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/stylesLog.css">
     <link rel="stylesheet" type="text/css" href="Styles/modal.css">
-    <title>Administracion</title>
+    <title>Administración</title>
     <script src="JS/validarLog.js"></script>
 </head>
 <body>

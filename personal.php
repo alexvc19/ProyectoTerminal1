@@ -67,7 +67,7 @@ if (isset($_SESSION["user"])) {
         <ul class="menu">
             <li><a href="homeAdm.php">Inicio</a></li>
             <li><a href="">Personal</a></li>
-            <li><a href="PHP/logout.php">Cerrar sesion</a></li>
+            <li><a href="PHP/logout.php">Cerrar sesión</a></li>
         </ul>
     </nav>
 </header>
