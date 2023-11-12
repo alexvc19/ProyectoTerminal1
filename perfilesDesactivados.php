@@ -1,7 +1,7 @@
 <?php
 require_once "PHP/connection.php";
+session_name('sesion_adm');
 session_start();
-
 
 if (isset($_SESSION["user"])) {
     try {

@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 require_once "../PHP/connection.php";
 
-session_name('coordinador');
+session_name('profesor');
 session_start();
 
 if (isset($_SESSION["user"])) {
@@ -24,7 +24,7 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="../Styles/menuStyle.css?v=1"> 
     <link rel="stylesheet" href="../Styles/404.css?v=1">
 
-    <title>Coordinación</title>
+    <title>Docentes</title>
 </head>
 <nav>
         <div class="user-profile">
@@ -42,10 +42,7 @@ if (isset($_SESSION["user"])) {
             </div>
         </div>
         <ul class="menu">
-            <li><a href="inicio.php">Inicio</a></li>
-            <li><a href="reservaciones.php">Reservaciones</a></li>
-            <li><a href="">Salones</a></li>
-            <li><a href="alumnos.php">Alumnos</a></li>
+            <li><a href="">Inicio</a></li>
             <li><a href="PHP/logout.php">Cerrar sesión</a></li>
         </ul>
     </nav>

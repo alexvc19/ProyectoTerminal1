@@ -33,6 +33,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         <?php
+        session_name('coordinador');
         session_start();
         
         if (isset($_SESSION['errorModal']) && $_SESSION['errorModal']){

@@ -1,10 +1,9 @@
-
-
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 require_once "../../PHP/connection.php";
 
+session_name('coordinador');
 session_start();
 
 function bloquearUsuarioTemporalmente() {
@@ -45,27 +44,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $document = current($cursor->toArray());
         if ($document) {
-            if ($pass === $document->contrasena) {
-                $_SESSION["user"] = $user;
-                $_SESSION["nombre"] = $document->nombres;
-                $_SESSION["apellidoP"] = $document->apellidoPaterno;
-                $_SESSION["apellidoM"] = $document->apellidoMaterno;
-                $_SESSION["foto"] = $document->fotoPerfil;
-                $_SESSION["sucursal"] = $document->direccion->estado;
-                $_SESSION['intentos_fallidos'] = 0;
+            // Verificar si el usuario está activo
+            if ($document->estatus === "activo") {
+                // Verificar la contraseña utilizando password_verify
+                if (password_verify($pass, $document->contrasena)) {
+                    $_SESSION["user"] = $user;
+                    $_SESSION["nombre"] = $document->nombres;
+                    $_SESSION["apellidoP"] = $document->apellidoPaterno;
+                    $_SESSION["apellidoM"] = $document->apellidoMaterno;
+                    $_SESSION["foto"] = $document->fotoPerfil;
+                    $_SESSION["sucursal"] = $document->direccion->estado;
+                    $_SESSION['intentos_fallidos'] = 0;
 
-                header("Location: ../inicio.php");
-                exit();
+                    header("Location: ../inicio.php");
+                    exit();
+                } else {
+                    $_SESSION['errorModal'] = true;
+                    registrarIntentoFallido();
+                    header("Location: ../login.php");
+                    exit();
+                }
             } else {
-                $_SESSION['errorModal'] = true;
-                registrarIntentoFallido();
-                header("Location: ../login.php");
+                echo "<script>alert('Usuario inactivo.');</script>";
+                echo "<script>window.location = '../login.php';</script>";
                 exit();
             }
         } else {
             $_SESSION['errorModal'] = true;
             header("Location: ../login.php");
-                exit();
+            exit();
         }
     } catch (MongoDB\Driver\Exception\Exception $e) {
         echo "Error al realizar la consulta: " . $e->getMessage();

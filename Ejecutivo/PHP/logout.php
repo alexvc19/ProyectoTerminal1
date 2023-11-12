@@ -1,5 +1,5 @@
 <?php
-session_name('coordinador');
+session_name('ejecutivo');
 session_start();
 
 session_destroy();

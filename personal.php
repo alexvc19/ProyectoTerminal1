@@ -1,5 +1,7 @@
 <?php
 require_once "PHP/connection.php";
+
+session_name('sesion_adm');
 session_start();
 
 
@@ -27,11 +29,11 @@ if (isset($_SESSION["user"])) {
 
     } catch (Exception $e) {
         echo $e->getMessage();
-        header("Location: login.php");
+        header("Location: loginAdm.php");
         exit();
     }
 } else {
-    header("Location: login.php");
+    header("Location: loginAdm.php");
     exit();
 }
 

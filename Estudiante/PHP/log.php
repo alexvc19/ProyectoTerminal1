@@ -1,11 +1,9 @@
-
-
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-require_once "connection.php";
+require_once "../../PHP/connection.php";
 
-session_name('sesion_adm');
+session_name('estudiante');
 session_start();
 
 function bloquearUsuarioTemporalmente() {
@@ -27,7 +25,7 @@ function usuarioBloqueado() {
 
 
 $databaseName = "VocabloDB";
-$collectionName = "Administrador";
+$collectionName = "Estudiante";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST["user"];
@@ -46,30 +44,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $document = current($cursor->toArray());
         if ($document) {
-            if ($pass === $document->contrasena) {
-                $_SESSION["user"] = $user;
-                $_SESSION["nombre"] = $document->nombres;
-                $_SESSION["apellidoP"] = $document->apellidoPaterno;
-                $_SESSION["apellidoM"] = $document->apellidoMaterno;
-                $_SESSION["sucursal"] = $document->sucursal;
-                $_SESSION['intentos_fallidos'] = 0;
+            
+                if ($pass = $document->contrasena) {
+                    $_SESSION["user"] = $user;
+                    $_SESSION["nombre"] = $document->nombres;
+                    $_SESSION["apellidoP"] = $document->apellidoPaterno;
+                    $_SESSION["apellidoM"] = $document->apellidoMaterno;
+                    $_SESSION["foto"] = $document->fotoPerfil;
+                    $_SESSION["sucursal"] = $document->direccion->estado;
+                    $_SESSION['intentos_fallidos'] = 0;
 
-                header("Location: ../homeAdm.php");
-                exit();
-            } else {
-                $_SESSION['errorModal'] = true;
-                registrarIntentoFallido();
-                header("Location: ../loginAdm.php");
-                exit();
-            }
+                    header("Location: ../inicio.php");
+                    exit();
+                } else {
+                    $_SESSION['errorModal'] = true;
+                    registrarIntentoFallido();
+                    header("Location: ../login.php");
+                    exit();
+                }
+            
         } else {
             $_SESSION['errorModal'] = true;
-            header("Location: ../loginAdm.php");
-                exit();
+            header("Location: ../login.php");
+            exit();
         }
     } catch (MongoDB\Driver\Exception\Exception $e) {
         echo "Error al realizar la consulta: " . $e->getMessage();
-        echo "<script>window.location = '../loginAdm.php';</script>";
+        echo "<script>window.location = '../log.php';</script>";
     }
 }
 ?>

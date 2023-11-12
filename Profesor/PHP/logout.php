@@ -1,5 +1,5 @@
 <?php
-session_name('coordinador');
+session_name('profesor');
 session_start();
 
 session_destroy();

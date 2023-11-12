@@ -1,5 +1,6 @@
 <?php
 
+session_name('sesion_adm');
 session_start();
 
 if (isset($_SESSION["user"])) {
@@ -144,7 +145,8 @@ if (isset($_SESSION["user"])) {
         </div>
     </div>
     <script>
-        var inputArchivo = document.getElementById("foto-perfil");    
+        var inputArchivo = document.getElementById("foto-perfil"); 
+        var contrasena = document.getElementById("contrasena").value;   
     </script>
     <script src="JS/validaciones.js"></script>
 </body>

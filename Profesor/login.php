@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styles/stylesLog.css">
-    <link rel="stylesheet" type="text/css" href="Styles/modal.css">
-    <link rel="icon" type="image/png" href="Resources/icons/log.png">
-
-    <title>Administración</title>
-    <script src="JS/validarLog.js"></script>
+    <link rel="stylesheet" href="../Styles/stylesLog.css">
+    <link rel="stylesheet" type="text/css" href="../Styles/modal.css">
+    <script src="../JS/validarLog.js"></script>
+    <title>Login profesores</title>
 </head>
 <body>
-        <div class="login-container" >
-            <h2>Administración</h2>
-            <form class="login-form" action="PHP/login.php" method="POST" onsubmit="return validarFormulario()" >
-            <a class="logo" href="index.html"><img src="Resources/img/logoVocablo.png" alt=""></a>
+<div class="login-container" >
+            <h2>Profesores</h2>
+            <form class="login-form" action="PHP/log.php" method="POST" onsubmit="return validarFormulario()" >
+                <a class="logo" href="../index.html"><img src="../Resources/img/logoVocablo.png" alt=""></a>
                 <div class="input-container">
                     <input type="text" id="user" name="user" required placeholder="Usuario">
                 </div>
@@ -35,8 +33,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         <?php
-        session_name('sesion_adm');
         session_start();
+        
         if (isset($_SESSION['errorModal']) && $_SESSION['errorModal']){
             echo "showErrorModal();";
             unset($_SESSION['errorModal']);
@@ -45,6 +43,6 @@
     });
 </script>
     
-    <script src="JS/modal.js"></script>
+    <script src="../JS/modal.js"></script>
 </body>
 </html>

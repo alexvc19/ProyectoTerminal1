@@ -1,6 +1,9 @@
 <?php
 require_once "connection.php";
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         if (
@@ -14,32 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             isset($_POST['curp']) &&
             isset($_POST['telefono']) &&
             isset($_POST['usuario']) &&
-            isset($_POST['contrasena']) &&
             isset($_POST['calle']) &&
             isset($_POST['numero']) &&
             isset($_POST['colonia']) &&
             isset($_POST['cp']) &&
             isset($_POST['ciudad']) &&
             isset($_POST['estado']) &&
-            isset($_POST['foto-perfil-actual']) &&
-            $_POST['perfil_id'] !== '' &&
-            $_POST['cargo'] !== '' &&
-            $_POST['nombres'] !== '' &&
-            $_POST['apellido-paterno'] !== '' &&
-            $_POST['apellido-materno'] !== '' &&
-            $_POST['genero'] !== '' &&
-            $_POST['fecha-nacimiento'] !== '' &&
-            $_POST['curp'] !== '' &&
-            $_POST['telefono'] !== '' &&
-            $_POST['usuario'] !== '' &&
-            $_POST['contrasena'] !== '' &&
-            $_POST['calle'] !== '' &&
-            $_POST['numero'] !== '' &&
-            $_POST['colonia'] !== '' &&
-            $_POST['cp'] !== '' &&
-            $_POST['ciudad'] !== '' &&
-            $_POST['estado'] !== '' &&
-            $_POST['foto-perfil-actual'] !== ''
+            isset($_POST['foto-perfil-actual'])
         ) {
             $perfilId = $_POST['perfil_id'];
             $cargo = $_POST['cargo'];
@@ -60,7 +44,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $estado = $_POST['estado'];
             $fotoPerfil = $_POST['foto-perfil-actual'];
 
+            $requiredFields = ['cargo', 'nombres', 'apellido-paterno', 'apellido-materno', 'genero', 'fecha-nacimiento', 'curp', 'telefono', 'usuario', 'calle', 'numero', 'colonia', 'cp', 'ciudad'];
+            foreach ($requiredFields as $field) {
+            if (empty($_POST[$field])) {
+                echo '<script>alert("Por favor, complete todos los campos"); window.location.href="../personal.php";</script>';
+                exit();
+            }
+            }
 
+            $coleccion = ($cargo === 'profesor') ? 'Profesor' : 'Coordinador';
+
+
+            $consultaPassword = new MongoDB\Driver\Query(['_id' => new MongoDB\BSON\ObjectID($perfilId)], ['projection' => ['contrasena' => 1]]);
+            $contrasenaActual = $mongo->executeQuery('VocabloDB.' . $coleccion, $consultaPassword)->toArray()[0]->contrasena;
+
+            if ($contrasena !== null && $contrasena !== '') {
+                $hashedPassword = password_hash($contrasena, PASSWORD_DEFAULT);
+            } else {
+            $hashedPassword = $contrasenaActual;
+            }
             if (isset($_FILES['foto-perfil']) && $_FILES['foto-perfil']['error'] === UPLOAD_ERR_OK) {
                 $identificadorUnico = uniqid();
                 $targetDirectory = '../Resources/perfiles/';
@@ -73,7 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
-            $coleccion = ($cargo === 'profesor') ? 'Profesor' : 'Coordinador';
 
             $filtro = ['_id' => new MongoDB\BSON\ObjectID($perfilId)];
             $actualizacion = [
@@ -88,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'curp' => $curp,
                     'telefono' => $telefono,
                     'usuario' => $usuario,
-                    'contrasena' => $contrasena,
+                    'contrasena' => $hashedPassword,
                     'direccion' => [
                         'calle' => $calle,
                         'numero' => $numero,
@@ -106,8 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo '<script>alert("Perfil actualizado exitosamente."); window.location.href="../personal.php";</script>';
         } else {
-            echo '<script>alert("Por favor, completa todos los campos."); window.location.href="../personal.php";</script>';
-            
             
         }
     } catch (Exception $e) {

@@ -1,6 +1,7 @@
 <?php
 require_once "PHP/connection.php";
 
+session_name('sesion_adm');
 session_start();
 
 if (isset($_SESSION["user"])) {
@@ -46,8 +47,6 @@ if (isset($_SESSION["user"])) {
     <link rel="stylesheet" href="Styles/menuBarStyle.css?v=1">
     <link rel="stylesheet" href="Styles/footerStyle.css?v=1">
     <link rel="stylesheet" href="Styles/modalG.css?v=1">
-    <link rel="icon" type="image/png" href="Resources/icons/personal.png">
-
     <title>Registro personal</title>
     <script src="JS/validaciones.js"></script>
 </head>
@@ -90,7 +89,7 @@ if (isset($_SESSION["user"])) {
     <center>
     <div class="form-container">
         <h2>Edición de información</h2>
-        <form action="PHP/modificarTrabajador.php" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+        <form action="PHP/modificarTrabajador.php" method="POST" enctype="multipart/form-data" onsubmit="return validarForm()">
         <input type="hidden" name="perfil_id" value="<?php echo $perfilId; ?>">
             <div class="form-group">
                 <label for="cargo">Cargo:</label>
@@ -145,7 +144,7 @@ if (isset($_SESSION["user"])) {
                     <input type="text" name="usuario" id="usuario" 
                     value="<?php echo $perfil->usuario; ?>" placeholder="Usuario" autocomplete="off" readOnly>
                     <input type="password" name="contrasena" id="contrasena" 
-                    value="<?php echo $perfil->contrasena; ?>" placeholder="Contraseña" autocomplete="off" minlength="8">
+                    value="" placeholder="Contraseña" autocomplete="off" minlength="8">
                     <button type="button" id="mostrarContrasena" onclick="mostrarOcultarContrasena()">Mostrar Contraseña</button>
 
                 </div>
@@ -154,17 +153,17 @@ if (isset($_SESSION["user"])) {
             <div class="form-group">
                 <label for="direccion">Dirección:</label>
                 <div class="input-group">
-                    <input type="text" name="calle" 
+                    <input type="text" name="calle" id="calle"
                     value="<?php echo $perfil->direccion->calle; ?>" autocomplete="off" placeholder="Calle">
-                    <input type="text" name="numero" 
+                    <input type="text" name="numero" id="numero"
                     value="<?php echo $perfil->direccion->numero; ?>" autocomplete="off" placeholder="Número">
                 </div>
             </div>
             <div class="form-group">
                 <div class="input-group">
-                    <input type="text" name="colonia" 
+                    <input type="text" name="colonia" id="colonia"
                     value="<?php echo $perfil->direccion->colonia; ?>" autocomplete="off" placeholder="Colonia">
-                    <input type="text" name="cp" autocomplete="off" 
+                    <input type="text" name="cp" id="cp" autocomplete="off" 
                     value="<?php echo $perfil->direccion->cp; ?>" placeholder="Código Postal">
                 </div>
             </div>

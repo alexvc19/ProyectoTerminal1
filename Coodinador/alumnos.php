@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 require_once "../PHP/connection.php";
 
+session_name('coordinador');
 session_start();
 
 if (isset($_SESSION["user"])) {

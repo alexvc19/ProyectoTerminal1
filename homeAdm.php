@@ -5,6 +5,7 @@ error_reporting(E_ALL);
 
 require_once "PHP/connection.php";
 
+session_name('sesion_adm');
 session_start();
 
 if (isset($_SESSION["user"])) {
@@ -34,7 +35,6 @@ if (isset($_SESSION["user"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/menuStyle.css?v=1"> 
     <link rel="stylesheet" href="Styles/cards.css?v=1">
-    <link rel="icon" type="image/png" href="Resources/icons/inicio.png">
 
     <title>Administración</title>
 </head>
