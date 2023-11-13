@@ -64,8 +64,8 @@ if (
         if (isset($_FILES['foto-perfil']) && $_FILES['foto-perfil']['error'] === UPLOAD_ERR_OK) {
             $identificadorUnico = uniqid();
             $targetDirectory = '../Resources/perfiles/';
-            $targetFile = $targetDirectory . basename($identificadorUnico.'-'.$_FILES['name']);
-            $tagFile = 'Resources/perfiles/' . basename($identificadorUnico.'-'.$_FILES['name']);
+            $targetFile = $targetDirectory . basename($identificadorUnico.'-'.$_FILES['foto-perfil']['name']);
+            $tagFile = 'Resources/perfiles/' . basename($identificadorUnico.'-'.$_FILES['foto-perfil']['name']);
 
             if (move_uploaded_file($_FILES['foto-perfil']['tmp_name'], $targetFile)) {
                 $fotoPerfil = $tagFile;
